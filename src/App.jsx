@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import "./App.css";
 
 import * as petService from "./services/petService.js"; // 3c.
+// everything exported here is under perService
 
 import PetList from "./components/PetList/PetList.jsx";
+import PetForm from "./components/PetForm/PetForm.jsx";
 
 function App() {
   //6.
@@ -27,10 +30,27 @@ function App() {
   }, []);
   // empy arrays says run use effect when the component onto the dom
 
+  //11.
+  async function createPet(dataFromTheForm) {
+    // lift the dataFromTheForm
+    // pass this function to the form component
+    // and call it when the user submits the form
+
+    try {
+      // here we are calling the http request create and passing it the form data
+      const newPet = await petService.create(dataFromTheForm);
+      console.log(newPet, "<-- new pet");
+      setPets([...pets, newPet]);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
-    <>
+    <div className="App">
       <PetList pets={pets} />
-    </>
+      <PetForm createPet={createPet} />
+    </div>
   );
 }
 export default App;
@@ -67,5 +87,15 @@ ASK FOR review of cors again
   create the structure, import in app.jsx, pass in props, confirm props in dev tools
 
 8. render out pets in petlist
+9. create the pet form 
+
+10. make create request is petService 
+  define headers and body 
+  parse, return data 
+
+. create pet function 
+  pass down to pet form 
+  grab, pass in info 
+  pass state to pet list 
 
 */

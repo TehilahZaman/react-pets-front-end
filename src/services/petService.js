@@ -20,5 +20,31 @@ async function index() {
   }
 }
 
+// US: i want to be able to create a pet 
+//where (what component) do we want to call this function ? 
+// Ans: - where ever the state is that pertain to this data 
+// when do we want to call this function ?
+// Ans: - when we submit the form 
+async function create(formData) {
+  try {
+    const response = await fetch(BASE_URL, {
+      //specify the http method
+      method: "POST",
+      // specify headers to tell the express server we are sending json
+      headers: {
+        "Content-Type": "appplication/json",
+      },
+      // body is the data we are sending to the server (backend)
+      // wrap it in json
+      body: JSON.stringify(formData),
+    })
+
+    const data = await response.json()
+    return data 
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 //3c export
-export { index };
+export { index, create };

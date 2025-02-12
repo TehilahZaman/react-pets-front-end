@@ -1,4 +1,4 @@
-// import PetList.css from "./PetList.css"
+import "./PetList.css";
 
 export default function PetList(props) {
   // 8.
@@ -11,7 +11,7 @@ export default function PetList(props) {
   // write out the component and pass in props
   // and confirm your props in the dev tools
   return (
-    <main>
+    <main className="pet-list">
       <h1>Pet List</h1>
       {/* 8. render out pets 
       check to see if pets exist */}
