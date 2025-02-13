@@ -1,20 +1,23 @@
 import { useState } from "react";
 import "./PetForm.css";
 
+const initialState = {
+  name: "",
+  age: 0,
+  breed: "",
+};
+
 export default function PetForm(props) {
-  const [formData, setFormData] = useState({
-    name: "",
-    age: 0,
-    breed: "",
-  });
+  const [formData, setFormData] = useState(initialState);
 
   function handleSubmit(e) {
     e.preventDefault();
     // call the function from app.js and pass in form data
     // lifting form data to app.jsx
     // so we can make our POSt fetch call to the express api
+    console.log(formData);
     props.createPet(formData);
-    //   setFormData()
+    setFormData(initialState);
   }
 
   function handleChange(e) {
