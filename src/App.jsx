@@ -1,5 +1,5 @@
 // I'M IN THE MAIN BRANCH
-// look no other comments her
+// look no other comments here
 
 import { useState, useEffect } from "react";
 import "./App.css";
